@@ -1,9 +1,11 @@
+/* Global styles */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* main body styles */
 html,
 body,
 .wrapper {
@@ -30,6 +32,7 @@ header {
   color: hsl(206, 17%, 28%);
 }
 
+/* Block that holds the password styles */
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
@@ -72,6 +75,7 @@ header {
   clear: both;
 }
 
+/* Style for the button that is clicked to generate the password */
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
@@ -93,10 +97,7 @@ button[disabled] {
   background: #c0c7cf;
 }
 
-.float-right {
-  float: right;
-}
-
+/* Password text stylization */
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -118,6 +119,7 @@ button[disabled] {
   overflow: hidden;
 }
 
+/* Interactive styles when changing the size of the screen */
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
