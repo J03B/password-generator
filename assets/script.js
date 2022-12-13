@@ -65,6 +65,13 @@ function generatePassword() {
             }
         }
     }
+
+    for (let i = 0; i < pwLength; i++) {
+        const singChar = randomChar(pwCharType);
+        pwText = pwText.concat(singChar);
+    }
+
+    return pwText;
 }
 
 // Function to validate the yes/no options for character types to include in the password
@@ -82,3 +89,21 @@ function ValidateYesOrNo(yon) {
     }
     return result;
 }
+
+function randomChar(criteria) {
+    let result = "";
+    let allChars = ["abcdefghijklmnopqrstuvwxyz","ABCDEFGHIJKLMNOPQRSTUVWXYZ","0123456789"," !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"];
+    let totPossible = 0;
+    let realChoices = "";
+  
+    for (let i = 0; i < criteria.length; i++) {
+      const crit = criteria[i];
+      if (crit == 1) {
+        realChoices = realChoices.concat(allChars[i]);
+      }
+    }
+  
+    totPossible = realChoices.length;
+    result = realChoices.charAt(Math.floor(Math.random() * totPossible));
+    return result;
+  }
