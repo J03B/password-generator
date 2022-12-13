@@ -41,4 +41,44 @@ function generatePassword() {
       } 
     }
     
+    // Loop to get each character type to include in the password
+    while (sumCharType <= 0) {
+        for (let i = 0; i < validCharType.length; i++) {
+            while (!validCharType[i]) {
+                pwCharType[i] = ValidateYesOrNo(window.prompt("Include " + charTypeCriteria[i] + " characters in the password? (Y/N or Yes/No)"));
+        
+                // Make sure the user entered something valid to break the loop
+                if (pwCharType[i] >= 0) {
+                    validCharType[i] = true;
+                } 
+                else {
+                    window.alert("Invalid selection. Try again.");
+                }
+            }
+
+            // If all character types are rejected, inform and restart the loop
+            sumCharType = pwCharType.reduce((psum, a) => psum + a, 0);
+            if (sumCharType <= 0 && i == (validCharType.length - 1)) {
+                window.alert("You must select at least one character type to use.");
+                validCharType = [false, false, false, false]
+                i=-1; continue;
+            }
+        }
+    }
+}
+
+// Function to validate the yes/no options for character types to include in the password
+function ValidateYesOrNo(yon) {
+    let result;
+    yon = yon.toUpperCase();
+    if ((yon == "Y") || (yon == "YE") (yon == "YES")) {
+        result = 1;
+    }
+    else if ((yon == "N") || (yon == "NO")) {
+        result = 0;
+    }
+    else {
+        result = -1;
+    }
+    return result;
 }
