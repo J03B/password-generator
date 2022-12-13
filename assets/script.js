@@ -66,6 +66,7 @@ function generatePassword() {
         }
     }
 
+    // use the user-entered criteria to generate the password
     for (let i = 0; i < pwLength; i++) {
         const singChar = randomChar(pwCharType);
         pwText = pwText.concat(singChar);
@@ -78,7 +79,7 @@ function generatePassword() {
 function ValidateYesOrNo(yon) {
     let result;
     yon = yon.toUpperCase();
-    if ((yon == "Y") || (yon == "YE") (yon == "YES")) {
+    if ((yon == "Y") || (yon == "YE") || (yon == "YES")) {
         result = 1;
     }
     else if ((yon == "N") || (yon == "NO")) {
@@ -90,12 +91,14 @@ function ValidateYesOrNo(yon) {
     return result;
 }
 
+// Randomize individual character function
 function randomChar(criteria) {
     let result = "";
     let allChars = ["abcdefghijklmnopqrstuvwxyz","ABCDEFGHIJKLMNOPQRSTUVWXYZ","0123456789"," !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"];
     let totPossible = 0;
     let realChoices = "";
   
+    // For each criterion selected, add those characters to the possible real choices
     for (let i = 0; i < criteria.length; i++) {
       const crit = criteria[i];
       if (crit == 1) {
@@ -103,6 +106,7 @@ function randomChar(criteria) {
       }
     }
   
+    // Randomize and return the result
     totPossible = realChoices.length;
     result = realChoices.charAt(Math.floor(Math.random() * totPossible));
     return result;
